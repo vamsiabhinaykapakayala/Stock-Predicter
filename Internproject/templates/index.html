@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .left-panel {
+            flex: 1;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            animation: slideIn 1s ease-in;
+        }
+
+        .left-panel img {
+            max-width: 80%;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .right-panel {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f7f7f7;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        h2 {
+            font-size: 30px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(135deg, #34d399, #10b981);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(135deg, #2dd4bf, #059669);
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            body {
+                flex-direction: column;
+            }
+            .left-panel, .right-panel {
+                flex: unset;
+                width: 100%;
+            }
+            .left-panel img {
+                max-width: 60%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="left-panel">
+        <img src="https://img.freepik.com/free-vector/stock-market-concept-illustration_114360-1006.jpg" alt="Stock Market Image">
+    </div>
+
+    <div class="right-panel">
+        <div class="form-container">
+            <h2>📈 Stock Price Predictor</h2>
+            <form action="/predict" method="POST">
+                <label>Enter Stock Ticker:</label>
+                <input type="text" name="stock" placeholder="e.g. AAPL, MSFT" required>
+
+                <label>Days to Predict (1 to 30):</label>
+                <input type="number" name="days" min="1" max="30" required>
+
+                <input type="submit" value="Predict">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
